@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Time Sheet</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">	
+	<div class="jumbotron text-center bg-dark text-white">
+		<h1 class="display-3">Train Times</h1>
+		<h3>It's a table...of Train Times</h3>
+	</div>
+
+
+	<div class="card">
+	  <div class="card-header bg-primary text-white display-5">
+		Featured
+	  </div>
+	  <div class="card-body">
+	    <!-- table  -->
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Train Name</th>
+			      <th>Destination</th>
+			      <th>Frequency (min)</th>
+			      <th>Next Arrival</th>
+			      <th>Minutes Away</th>
+			      <th>Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>Thomas the Train Engine</td>
+			      <td>Pound Town</td>
+			      <td>15</td>
+			      <td>1:00 PM</td>
+			      <td>13</td>
+			      <td>On Time</td>
+			    </tr>
+			  </tbody>
+			</table>
+	  </div>
+	</div>
+
+	<div class="card my-5">
+		<div class="card-header bg-primary text-white display-5">Add Train Line</div>
+
+			<div class="card-body">
+				<form>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Train Name</label>
+				    <input type="email" class="form-control" id="trainName" aria-describedby="emailHelp">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Destination</label>
+				    <input type="password" class="form-control" id="destination">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">First Train Time (HH:mm - military 24hr clock)</label>
+				    <input type="password" class="form-control" id="firstDepart">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Frequency (min)</label>
+				    <input type="password" class="form-control" id="freq">
+				  </div>
+				  <div class="form-check">
+				  </div>
+				  <button type="submit" class="btn btn-primary" id="addTrain">Submit</button>
+				</form>
+			</div>
+
+	</div>
+
+
+</div>
+
+
+</body>
+</html>
