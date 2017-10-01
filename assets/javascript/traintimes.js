@@ -41,7 +41,6 @@ var database = firebase.database();
   }
 
 database.ref().on("child_added", function(snapshot){
-  console.log(snapshot.val().trainData.destination);
 
   var trainName = snapshot.val().trainData.trainName;
   var destination = snapshot.val().trainData.destination;
@@ -49,21 +48,25 @@ database.ref().on("child_added", function(snapshot){
   var freq = snapshot.val().trainData.freq;
 
   var timeNow = moment();
-  console.log(moment(timeNow).format("X"));
-  var timeDepart= moment(firstDepart,"HH:mm");
-  console.log(moment(timeDepart).format("X"));
+  var timeDepart = moment(firstDepart,"HH:mm");
+  // if train has already started running then run first function
   if(moment(timeNow).format("X") >= moment(timeDepart).format("X")){
-    var diff = timeNow.diff(timeDepart, "X");
-  } else {
-    var diff = timeDepart.diff(timeNow, "X")
-  }
-  console.log(diff);
-  var freqMoment = moment(freq,"mm").format("X");
-  console.log(freqMoment);
-  
+    var diff = timeNow.diff(timeDepart, 'minutes');
+    var minutesSinceLastTrain = diff%freq;
+    var minutesTillNextTrain = freq - minutesSinceLastTrain;
+    var timeSinceLastTrain = moment.duration(minutesTillNextTrain, 'minutes');
+    var timeTillNextTrain = timeNow.add(timeSinceLastTrain).format("hh:mm a");
 
-  // $("#trainTable > tbody").append(
-  //   "<tr><td> + "
-  //   )
+    $("#trainTable > tbody").append(
+      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td> On Time"
+      )
+    // else the first train hasn't departed yet and will set the next departure to the first departure
+  } else {
+      var timeTillNextTrain = moment(firstDepart,"HH:mm").format("hh:mm a");
+      var minutesTillNextTrain = timeDepart.diff(timeNow,'minutes');
+      $("#trainTable > tbody").append(
+      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td> Not Departed"
+      )
+  }
 
 });
