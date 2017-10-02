@@ -58,14 +58,14 @@ database.ref().on("child_added", function(snapshot){
     var timeTillNextTrain = timeNow.add(timeSinceLastTrain).format("hh:mm a");
 
     $("#trainTable > tbody").append(
-      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td> On Time"
+      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td id='onTime'> On Time</td>"
       )
     // else the first train hasn't departed yet and will set the next departure to the first departure
   } else {
       var timeTillNextTrain = moment(firstDepart,"HH:mm").format("hh:mm a");
       var minutesTillNextTrain = timeDepart.diff(timeNow,'minutes');
       $("#trainTable > tbody").append(
-      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td> Not Departed"
+      "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + freq + "</td><td>" + timeTillNextTrain +"</td><td>" + minutesTillNextTrain + "</td><td id='notDeparted'> Not Departed</td>"
       )
   }
 

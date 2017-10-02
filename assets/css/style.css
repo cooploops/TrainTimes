@@ -1,0 +1,37 @@
+body {
+	background-color: #18121E;
+}
+
+.jumbotron {
+	background-color: #233237;
+	border: 2px solid #EAC67A;
+}
+
+.card-header {
+	background-color: #984B43;
+}
+
+.card {
+	border: 2px solid #EAC67A;
+}
+
+#addTrain {
+	background-color: #233237;
+	color: white;
+}
+
+#addTrain:hover {
+	background-color: #18121E;
+	color: white;
+	border: 3px solid #EAC67A;
+	border-radius: 5px;
+}
+
+#onTime {
+	color: green;
+}
+
+#notDeparted {
+	color: red;
+}
+
